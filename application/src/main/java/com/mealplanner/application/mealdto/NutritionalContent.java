@@ -1,5 +1,6 @@
 package com.mealplanner.application.mealdto;
 
+// contains the nutritional content for the entire day of meals generated
 public class NutritionalContent {
 
 	

@@ -1,5 +1,6 @@
 package com.mealplanner.application.mealdto;
 
+//Contains all the specific descripters for what each meal consists of
 public class Meal {
 	
 	String id;

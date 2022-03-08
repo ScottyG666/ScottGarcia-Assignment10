@@ -1,4 +1,4 @@
-package com.mealplanner.application.mealplannerconfiguration;
+package com.mealplanner.application.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
