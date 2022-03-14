@@ -1,6 +1,7 @@
 package com.mealplanner.application.mealplanningservices;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +24,16 @@ public class SpoonacularQueryService {
 		
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
 									  .queryParam("timeFrame", "day")
-									  .queryParam("targetCalories", numCalories)
-									  .queryParam("diet", diet)
-									  .queryParam("exclude", exclusions)
+									  .queryParamIfPresent("targetCalories", Optional.ofNullable(numCalories))
+									  .queryParamIfPresent("diet", Optional.ofNullable(diet))
+									  .queryParamIfPresent("exclude", Optional.ofNullable(exclusions))
 									  .queryParam("apiKey", "d660c9194d9144488d96555f81c2939d")
 									  .build()
 									  .toUri();
+		
+		if (numCalories != null && diet != null && exclusions != null) {
+			
+		}
 		
 		
 		return rt.getForEntity(uri, DayResponse.class);
@@ -38,9 +43,9 @@ public class SpoonacularQueryService {
 		
 		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/generate")
 				  .queryParam("timeFrame", "week")
-				  .queryParam("targetCalories", numCalories)
-				  .queryParam("diet", diet)
-				  .queryParam("exclude", exclusions)
+				  .queryParamIfPresent("targetCalories", Optional.ofNullable(numCalories))
+				  .queryParamIfPresent("diet", Optional.ofNullable(diet))
+				  .queryParamIfPresent("exclude", Optional.ofNullable(exclusions))
 				  .queryParam("apiKey", "d660c9194d9144488d96555f81c2939d")
 				  .build()
 				  .toUri();
